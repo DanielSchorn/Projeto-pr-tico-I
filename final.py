@@ -1,6 +1,7 @@
 import csv
 from statistics import mean, stdev
 
+# Carregar os dados do arquivo CSV
 def load_data(file_name):
     data = []
     with open(file_name, newline='', encoding='utf-8') as csvfile:
@@ -9,6 +10,7 @@ def load_data(file_name):
             data.append(row)
     return data
 
+# Exibir menu principal
 def show_main_menu():
     print("Escolha uma opção:")
     print("1. Informações descritivas")
@@ -16,6 +18,7 @@ def show_main_menu():
     print("3. Realizar agrupamento de registros")
     print("4. Sair")
 
+# Exibir informações descritivas
 def show_descriptive_info(data):
     num_records = len(data) - 1
     num_columns = len(data[0])
@@ -48,6 +51,7 @@ def show_descriptive_info(data):
             print(f"  Valor médio: {avg_value:.2f}")
     print()
 
+# Filtrar registros
 def filter_records(data):
     column_names = data[0]
     
@@ -61,7 +65,7 @@ def filter_records(data):
     chosen_values = input("Digite os valores para a condição (separados por vírgula): ").split(',')
     chosen_test = input("Digite o teste de comparação (ex: >, <, =, >=, <=, !=): ")
     
-    filtered_data = [data[0]] 
+    filtered_data = [data[0]]  # Header
     for row in data[1:]:
         if chosen_test == '=':
             if row[col_choice] in chosen_values:
@@ -72,6 +76,7 @@ def filter_records(data):
     
     return filtered_data
 
+# Realizar agrupamento de registros
 def group_and_apply(data):
     column_names = data[0]
     
